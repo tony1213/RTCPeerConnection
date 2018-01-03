@@ -26,6 +26,7 @@ var startTime;
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
 
+//step 3
 localVideo.addEventListener('loadedmetadata', function() {
     trace('Local video videoWidth: ' + this.videoWidth +
         'px,  videoHeight: ' + this.videoHeight + 'px');
@@ -64,6 +65,7 @@ function getOtherPc(pc) {
     return (pc === pc1) ? pc2 : pc1;
 }
 
+//step 2
 function gotStream(stream) {
     trace('Received local stream');
     localVideo.srcObject = stream;
@@ -71,6 +73,7 @@ function gotStream(stream) {
     callButton.disabled = false;
 }
 
+//step 1
 function start() {
     trace('Requesting local stream');
     startButton.disabled = true;
@@ -84,6 +87,7 @@ function start() {
         });
 }
 
+//step 4
 function call() {
     callButton.disabled = true;
     hangupButton.disabled = false;
@@ -132,6 +136,7 @@ function onCreateSessionDescriptionError(error) {
     trace('Failed to create session description: ' + error.toString());
 }
 
+//step 5
 function onCreateOfferSuccess(desc) {
     trace('Offer from pc1\n' + desc.sdp);
     trace('pc1 setLocalDescription start');
